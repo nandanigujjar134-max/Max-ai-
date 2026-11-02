@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAX AI</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #101827;
+  color: white;
+}
+header {
+  background: #172b50;
+  padding: 22px;
+  text-align: center;
+  font-size: 26px;
+  font-weight: bold;
+}
+main {
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+}
+#chat {
+  height: 55vh;
+  overflow-y: auto;
+  background: #1d293b;
+  padding: 15px;
+  border-radius: 12px;
+}
+.msg {
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  background: #30435f;
+}
+input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+}
+button {
+  width: 100%;
+  padding: 15px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #2878ff;
+  color: white;
+  font-size: 17px;
+}
+</style>
+</head>
+<body>
+<header>🤖 MAX AI</header>
+<main>
+<h2>नमस्ते! मैं MAX AI हूँ।</h2>
+<div id="chat">
+<div class="msg">नमस्ते! MAX AI में आपका स्वागत है।</div>
+</div>
+<input id="message" placeholder="अपना सवाल लिखें...">
+<button onclick="sendMessage()">Send</button>
+</main>
+<script>
+function sendMessage() {
+  let input = document.getElementById("message");
+  let chat = document.getElementById("chat");
+  let msg = input.value.trim();
+  if (!msg) return;
+
+  chat.innerHTML +=
+    '<div class="msg"><b>आप:</b> ' + escapeHTML(msg) + '</div>';
+
+  chat.innerHTML +=
+    '<div class="msg"><b>MAX AI:</b> अभी मैं डेमो मोड में हूँ। AI कनेक्शन अगले स्टेप में जोड़ेंगे।</div>';
+
+  input.value = "";
+  chat.scrollTop = chat.scrollHeight;
+}
+function escapeHTML(text) {
+  return text.replace(/[&<>"']/g, c =>
+    ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])
+  );
+}
+</script>
+</body>
+</html>
+
